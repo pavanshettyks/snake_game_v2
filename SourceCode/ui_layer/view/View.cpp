@@ -8,6 +8,7 @@
 
 #include "ui_layer/view/View.hpp"
 #include "domain_layer/game/Game.hpp"
+//#include "domain_layer/player/Player.hpp"
 #include "technical_services_layer/Persistence/SimpleStorage.hpp"
 #include "technical_services_layer/Logger/SimpleLogger.hpp"
 #include "technical_services_layer/Payment/CreditCard.hpp"
@@ -62,7 +63,7 @@ namespace ui_layer::view
       _loggerPtr(new technical_services_layer::Logging::SimpleLogger)
     {
         //_cmdData = NULL;
-        _gameData = NULL;
+       // _gameData = NULL;
         _playerData = NULL;
         mScreenHeight = 0;
         _ccFactory = technical_services_layer::payment::CreditCardFactory::createFactory();
@@ -669,64 +670,14 @@ namespace ui_layer::view
     //
     // Draw the piece provided.
     //
-    void View::drawPiece(int pX, int pY, std::vector<std::vector<int>> *piece, color piece_color)
-    {
-        // Travel the matrix of blocks of the piece and draw the blocks that are filled
-        for (unsigned int i = 0; i < board_info.piece_block; i++)
-        {
-            for (unsigned int j = 0; j < board_info.piece_block; j++)
-            {
-                if ((*piece)[i][j] != 0)
-                {
-                    drawBlock(pX + i * board_info.block_size,
-                        pY + j * board_info.block_size,
-                        board_info.block_size - 1, board_info.block_size - 1,
-                        piece_color);
-                }
-            }
-        }
-    }
-
+   
     //
     // Draw the two lines that delimit the board
     //
     void View::drawBoard()
     {
         // Calculate the limits of the board in pixels
-        int mX1 = board_info.board_position - (board_info.block_size * (board_info.board_width / 2)) - 1;
-        int mX2 = board_info.board_position + (board_info.block_size * (board_info.board_width / 2));
-        int mY = mScreenHeight - (board_info.block_size * board_info.board_height);
-
-        // Rectangles that delimits the board
-        drawBlock(mX1 - board_info.board_line_width, mY, board_info.board_line_width, mScreenHeight - 1, BLUE);
-        drawBlock(mX2, mY, board_info.board_line_width, mScreenHeight - 1, BLUE);
-        drawBlock(mX1, mScreenHeight, board_info.block_size * board_info.board_width, board_info.board_line_width, BLUE);
-
-        mX1++;
-
-        color mColor;
-
-        // Retrives the current board layout.
-        std::vector<std::vector<int>> board_layout;
-        board_layout = _gameData->get_board_data();
-
-        // Rectangles that represent the stored pieces on the board
-        for (unsigned int i = 0; i < board_info.board_width; i++)
-        {
-            for (unsigned int j = 0; j < board_info.board_height; j++)
-            {
-                mColor = static_cast<color>(board_layout[i][j]);
-
-                // Draw the blocks that have been filled
-                if (board_layout[i][j])
-                {
-                    drawBlock(mX1 + i * board_info.block_size,
-                        mY + j * board_info.block_size,
-                        board_info.block_size - 1, board_info.block_size - 1,
-                        mColor);
-                }
-            }
-        }
+      
     }
 
     //
@@ -734,19 +685,6 @@ namespace ui_layer::view
     //
     void View::drawScene()
     {
-        clearScreen();                          // Clear Screen for rendering
-        loadBackGround();                       // Load background image
-        showScore(_gameData->get_curr_score()); // Load score.
-        drawBoard();                            // Draw the delimitation lines and blocks stored in the board
-
-        // Get current piece configuration and draw.
-        domain_layer::game::PieceInfo piece_info;
-        piece_info = _gameData->get_piece_data();
-        drawPiece(piece_info.draw_posX, piece_info.draw_posY, piece_info.piece_layout, static_cast<color>(piece_info.piece_color));
-
-        // Get next piece configuration and draw.
-        piece_info = _gameData->get_next_piece_data();
-        drawPiece(piece_info.draw_posX, piece_info.draw_posY, piece_info.piece_layout, static_cast<color>(piece_info.piece_color));
-        updateScreen();
+      
     }
 }

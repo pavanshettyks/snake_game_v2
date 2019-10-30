@@ -45,7 +45,7 @@ namespace domain_layer::game
             virtual ~GameHandler() noexcept = 0;
 
             // Initialize game module
-            virtual void init_game()                                = 0;
+         /*   virtual void init_game()                                = 0;
 
             // Functions to get data from domain_layer.
             virtual unsigned int get_curr_score()                   = 0;
@@ -61,7 +61,7 @@ namespace domain_layer::game
             virtual void rotate_piece()                             = 0;
             virtual void process_space_key()                        = 0;
             virtual void process_timeout_movement()                 = 0;
-            virtual bool is_game_over()                             = 0;
+            virtual bool is_game_over()                             = 0;*/
     };
 
     inline GameHandler::~GameHandler() noexcept

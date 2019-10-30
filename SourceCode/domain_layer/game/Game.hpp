@@ -5,7 +5,7 @@
 #define _GAME_
 
 #include "domain_layer/player/Player.hpp"
-#include "domain_layer/board/Board.hpp"
+//#include "domain_layer/board/Board.hpp"
 #include "domain_layer/game/GameHandler.hpp"
 
 #define WAIT_TIME 700  // Number of milliseconds that the piece remains before going 1 block down
@@ -18,11 +18,11 @@ namespace domain_layer::game
     class Game : public domain_layer::game::GameHandler
     {
         public:
-            Game(domain_layer::player::Player *PlayerPtr, int screenHeight);
+            Game(domain_layer::player::Player *PlayerPtr);
 
             ~Game();
 
-            // Initialize game module
+       /*     // Initialize game module
             void init_game()                                override;
 
             // Functions to get data from domain_layer.
@@ -39,12 +39,12 @@ namespace domain_layer::game
             void rotate_piece()                             override;
             void process_space_key()                        override;
             void process_timeout_movement()                 override;
-            bool is_game_over()                             override;
+            bool is_game_over()                             override; */
 
         private:
             int mScreenHeight;
             domain_layer::player::Player* _playerData;
-            domain_layer::board::Board*   _boardData;
+           // domain_layer::board::Board*   _boardData;
     };
 
 }

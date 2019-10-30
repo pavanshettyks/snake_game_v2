@@ -9,11 +9,11 @@ namespace domain_layer::game
     //
     // Constructor
     //
-    Game::Game(domain_layer::player::Player *PlayerPtr, int screenHeight)
+    Game::Game(domain_layer::player::Player *PlayerPtr)
     {
         _playerData = PlayerPtr;
-        _boardData = NULL;
-        mScreenHeight = screenHeight;
+     //   _boardData = NULL;
+       // mScreenHeight = screenHeight;
     }
 
     //
@@ -23,7 +23,7 @@ namespace domain_layer::game
     {
 
     }
-
+/*
     //
     // Creates the board object.
     //
@@ -206,4 +206,5 @@ namespace domain_layer::game
             _boardData->updatePiece();
         }  
     }
+*/
 }
