@@ -64,6 +64,39 @@ namespace technical_services_layer::Persistence
         return true;
     }
 
+
+    //
+    // Returns true if username is taken else false
+    //
+     bool SimpleStorage::validateUsername(const std::string & username)
+    {
+        std::string line;
+        std::string name, passwd;
+        unsigned int score, gamesLeft;
+
+        // Open credential file.
+        std::ifstream credFile(CREDENTIAL_FILENAME, std::ios::in);
+        if (!credFile.is_open())
+        {
+            std::cout << "Failed to open credentials file." << std::endl;
+        }
+
+        // Find the data matching the username provided.
+        while (getline(credFile, line))
+        {
+            std::istringstream buf(line);
+            buf >> name >> passwd >> score >> gamesLeft;
+            if (name == username)
+            {
+                return true;
+            }
+        }
+
+        // if username not found.
+        return false;
+    }
+
+
     //
     // Returns the user credentials for the username provided.
     //
@@ -76,7 +109,7 @@ namespace technical_services_layer::Persistence
         // If admin just return the hardcoded value.
         if (username == "admin")
         {
-            UserCredentials ret = {"admin", "admin123", 0, 0};
+            UserCredentials ret = {"admin", "q123", 0, 0};
             return ret;
         }
 
@@ -95,6 +128,7 @@ namespace technical_services_layer::Persistence
             if (name == username)
             {
                 UserCredentials ret = {name, passwd, score, gamesLeft};
+		 //std::cout << name << passwd << score << gamesLeft;
                 return ret;
             }
         }
@@ -102,6 +136,7 @@ namespace technical_services_layer::Persistence
         // if username not found.
         return {username, "", 0, 0};
     }
+
 
     //
     // Returns the vector of max scores of all the players.
@@ -130,6 +165,7 @@ namespace technical_services_layer::Persistence
 
         return maxScores;
     }
+
 
     //
     // Changes the max score of the player in the file.
@@ -183,6 +219,7 @@ namespace technical_services_layer::Persistence
             _logger << "Critical Error: credentials file is deleted.";
         }
     }
+
 
     //
     // Appends the player score to the player file.

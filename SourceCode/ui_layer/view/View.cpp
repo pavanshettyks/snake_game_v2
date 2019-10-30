@@ -3,6 +3,9 @@
 //
 #include <algorithm>
 
+
+
+
 #include "ui_layer/view/View.hpp"
 #include "domain_layer/game/Game.hpp"
 #include "technical_services_layer/Persistence/SimpleStorage.hpp"
@@ -108,14 +111,16 @@ namespace ui_layer::view
         while (1)
         {
             std::system(OS_DEP_CLEAR);
-            std::cout << "-----------------------------------------" << std::endl;
+	    //std::cout << termcolor::red << "Hello, Colorful World!" << std::endl;
+            std::cout << "\033[1;31m-----------------------------------------\033[0m" << std::endl;
             std::cout << "    Welcome to the game station Menu     " << std::endl;
-            std::cout << "-----------------------------------------" << std::endl;
+            std::cout << "\033[32m-----------------------------------------\033[0m" << std::endl;
             std::cout << "1 - Create New Player Account" << std::endl;
             std::cout << "2 - Player login       " << std::endl;
             std::cout << "3 - Exit               " << std::endl;
             std::cout << "-----------------------------------------" << std::endl;
             std::cout << "Enter your choice: ";
+//	    std::cout << "\033[1;31mbold red text\033[0m\n";
             std::cin >> choice;
     
             if (choice == 0 || choice > 3)
@@ -150,36 +155,52 @@ namespace ui_layer::view
     {
         std::string username, password;
         technical_services_layer::Persistence::UserCredentials cred;
+	//technical_services_layer::Persistence::UserCredentials cred;
         bool ret = true;
+
 
         std::system(OS_DEP_CLEAR);
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+///
         std::cout << "---------------------------" << std::endl;
         std::cout << "    Player Registration    " << std::endl;
+
         std::cout << "---------------------------" << std::endl;
         std::cout << "Please Enter username: ";
         std::getline(std::cin, username);
         std::cout << "Enter password: ";
         std::getline(std::cin, password);
+	
+
+	
+        if (_persistentData->validateUsername(username))
+        {
+            std::cout <<termcolor::red << "Username is already taken." << termcolor::reset << std::endl;
+	    std::cout <<termcolor::red  << "Player registration failed. Retry later." << termcolor::reset<<std::endl;
+            goto end;
+        }
+
 
         cred.username = username;
         cred.password = password;
         cred.maxScore = 0;
-        cred.gamesLeft = 3;
+        cred.gamesLeft = 5;
 
         ret = _persistentData->registerPlayer(cred);
         if (ret == false)
         {
-            std::cout << "Player registration failed. Retry later." << std::endl;
+            std::cout  <<termcolor::red << "Player registration failed. Retry later." << termcolor::reset<<std::endl;
             goto end;
         }
-
-        std::cout << "Player registration successfull." << std::endl;
+	std::cout << termcolor::green << "Player registration successfull" <<termcolor::reset<< std::endl;
+        //std::cout << "Player registration successfull." << std::endl;
+	std::cout << "Thank you for choosing our game"<< std::endl;
+	
 
     end:
 	//Sleep(1000);
-	std::cout << "Returning to main screen";
-        std::cout << "Press enter to continue";
+	std::cout << "Returning to main screen"<< std::endl;
+        std::cout << "Press enter to continue"<< std::endl;
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
 
@@ -205,14 +226,15 @@ namespace ui_layer::view
         std::getline(std::cin, password);
 
         cred = _persistentData->getCredentialsByUsername(username);
+        //std::cout << "Invalid username or password." << cred.password <<std::endl;
         if (cred.password != password)
         {
             ret = false;
-            std::cout << "Invalid username or password." << std::endl;
+            std::cout <<termcolor::red<<"Invalid username or password." <<termcolor::reset<< std::endl;
             goto end;
         }
 
-        std::cout << "Player login successfull" << std::endl;
+        std::cout <<termcolor::green<< "Player login successfull" <<termcolor::reset<< std::endl;
 
         //
         // Create player handle.
@@ -306,19 +328,19 @@ namespace ui_layer::view
         std::string password;
         technical_services_layer::Persistence::UserCredentials cred;
 
-        std::cout << "Username: admin" << std::endl;
+        std::cout <<termcolor::green<< "Username: admin" << std::endl;
         std::cout << "Enter password: ";
         std::getline(std::cin, password);
 
         cred = _persistentData->getCredentialsByUsername("admin");
         if (cred.password != password)
         {
-            std::cout << "Invalid admin password." <<std::endl;
+            std::cout <<termcolor::red<< "Invalid admin password." <<std::endl;
 	    std::cout << "Please try again." <<std::endl;
             return false;
         }
 
-        std::cout << "System start initiated" << std::endl;
+        std::cout << "System start initiated" <<termcolor::reset<< std::endl;
         std::cout << "Press enter to continue...";
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         return true;
@@ -368,101 +390,15 @@ namespace ui_layer::view
 	_control = new ui_layer::controller::Controller;
   	Game game(kGridWidth, kGridHeight);
         game.Run(_control, renderer, kMsPerFrame);
+
         std::cout << "Game has terminated successfully!\n";
         std::cout << "Score: " << game.GetScore() << "\n";
  	std::cout << std::endl;
         std::cout << "Press enter to continue...";
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            getline(std::cin, temp);
+        getline(std::cin, temp);
   //std::cout << "Size: " << game.GetSize() << "\n";
-	/*bool quit = false;
-        SDL_Event e;
-
-        // Initialize the SDL library.
-        init_SDL();
-
-        // Get screen height.
-        mScreenHeight = getScreenHeight();
-
-        // Create object of command and game.
-        _cmdData =  new ui_layer::commands::Commands;
-        _gameData =  new domain_layer::game::Game(static_cast<domain_layer::player::Player*>(_playerData), mScreenHeight);
-
-        
-        unsigned long time1 = SDL_GetTicks();
-
-        // Game loop
-        while (!quit)
-        {
-            // Draws the entire scene on the window.
-            drawScene();
-
-            // Polls for the user input.
-            int key = _cmdData->pollkey(&e);
-            while (SDL_PollEvent(&e) != 0)
-            {
-                if (e.type == SDL_QUIT)
-                {
-                    quit = true;
-                }
-            }
-
-            // user input
-            switch (key)
-            {
-                case (10):
-                {
-                    quit = true;
-                    break;
-                }
-                case (SDLK_RIGHT):
-                {
-                    _gameData->move_piece_right();
-                    break;
-                }
-                case (SDLK_LEFT):
-                {
-                    _gameData->move_piece_left();
-                    break;
-                }
-                case (SDLK_DOWN):
-                {
-                    _gameData->move_piece_down();
-                    break;
-                }
-                case (SDLK_SPACE):
-                {
-                    _gameData->process_space_key();
-
-                    if (_gameData->is_game_over())
-                    {
-                        messageBox();
-                        goto exit_loop;
-                    }
-                    break;
-                }
-                case (SDLK_UP):
-                {
-                    _gameData->rotate_piece();
-                    break;
-                }
-            }
-
-            // automatice vertical movement
-            unsigned long time2 = SDL_GetTicks();
-            if ((time2 - time1) > WAIT_TIME)
-            {
-                _gameData->process_timeout_movement();
-
-                if (_gameData->is_game_over())
-                {
-                    messageBox();
-                    goto exit_loop;
-                }
-
-                time1 = SDL_GetTicks();
-            }
-        }
+	/*bool
 
     exit_loop:
         cleanup_SDL();
@@ -484,7 +420,9 @@ namespace ui_layer::view
         std::cout << std::endl;
         std::cout << "   Payment Info   " << std::endl;
         std::cout << "------------------" << std::endl;
-        std::cout << "Name: " << std::endl;
+	std::cout << "Card type (visa/mastercard): " << std::endl;
+        getline(std::cin, ccInfo.cardType);
+        std::cout << "Name on card: " << std::endl;
         getline(std::cin, ccInfo.name);
         std::cout << "Credit card number: " << std::endl;
         getline(std::cin, ccInfo.cardNum);

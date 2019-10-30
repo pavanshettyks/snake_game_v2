@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory>
-
+#include "termcolor.hpp"
 #ifdef WINDOWS
     #include "ui_layer/sdl/include/windows/SDL.h"
     #include "ui_layer/sdl/include/windows/SDL2_gfxPrimitives.h"

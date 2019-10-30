@@ -33,6 +33,7 @@ namespace technical_services_layer::Persistence
             ~SimpleStorage();
 
             bool                registerPlayer(UserCredentials)                         override;
+	    bool                validateUsername(const std::string & username)		override;
             UserCredentials     getCredentialsByUsername(const std::string & username)  override;
             std::vector<Score>  getAllPlayerMaxScore()                                  override;
             void                setPlayerMaxScore(const std::string & , unsigned int)   override;

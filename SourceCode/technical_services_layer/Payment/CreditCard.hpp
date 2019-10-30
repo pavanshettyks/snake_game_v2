@@ -16,6 +16,7 @@ namespace technical_services_layer::payment
 {
     struct CreditCardInfo
     {
+	std::string cardType;
         std::string name;
         std::string cardNum;
         unsigned int expiryMonth;
@@ -74,10 +75,12 @@ namespace technical_services_layer::payment
     };
 
 
+
     class CreditCardFactory
     {
         public:
-            static CreditCardFactory* createFactory();
+
+	    static CreditCardFactory* createFactory();
 
             virtual CreditCard* createCreditCard(CreditCardInfo & ccInfo) = 0;
     };

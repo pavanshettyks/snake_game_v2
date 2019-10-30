@@ -32,6 +32,7 @@ namespace technical_services_layer::Persistence
         virtual ~PersistenceHandler() noexcept = 0;
 
         virtual bool                registerPlayer( UserCredentials)                        = 0;
+	virtual bool                validateUsername(const std::string & username)	    = 0;
         virtual UserCredentials     getCredentialsByUsername(const std::string & username)  = 0;
         virtual std::vector<Score>  getAllPlayerMaxScore()                                  = 0;
         virtual void                setPlayerMaxScore(const std::string &, unsigned int)    = 0;

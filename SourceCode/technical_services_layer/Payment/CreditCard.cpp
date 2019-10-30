@@ -24,6 +24,7 @@ namespace technical_services_layer::payment
     //
     // Create the appropriate factory based on the config read from file.
     //
+
     CreditCardFactory* CreditCardFactory::createFactory()
     {
         //
@@ -41,7 +42,7 @@ namespace technical_services_layer::payment
         getline(PaymentConfigFile, line);
 
         PaymentConfigFile.close();
-
+	//std::cout << "Unsupported credit card type found in config file" <<cardType<<std::endl;
         if(line == "visa")
             return new VisaCardFactory();
         else if(line == "mastercard")
@@ -57,6 +58,7 @@ namespace technical_services_layer::payment
     //
     // Processes the payment of visa card.
     //
+     
     bool VisaCard::make_payment()
     {
         _logger << "Visa payment sucessful.";
