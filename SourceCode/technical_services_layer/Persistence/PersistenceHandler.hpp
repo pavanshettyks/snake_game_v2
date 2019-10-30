@@ -33,8 +33,9 @@ namespace technical_services_layer::Persistence
 
         virtual bool                registerPlayer( UserCredentials)                        = 0;
 	virtual bool                validateUsername(const std::string & username)	    = 0;
-        virtual UserCredentials     getCredentialsByUsername(const std::string & username)  = 0;
-        virtual std::vector<Score>  getAllPlayerMaxScore()                                  = 0;
+        virtual UserCredentials     getPlayerCredentials(const std::string & username)      = 0;
+	virtual UserCredentials     adminLogin(const std::string & username)                = 0;
+        virtual std::vector<Score>  getMaxScores()	                                    = 0;
         virtual void                setPlayerMaxScore(const std::string &, unsigned int)    = 0;
         virtual void                addPlayerScore(const std::string & , unsigned int)      = 0;
         virtual void                changePlayerGamesLeft(const std::string & username, unsigned int games_left)    = 0;

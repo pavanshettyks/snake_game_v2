@@ -34,8 +34,9 @@ namespace technical_services_layer::Persistence
 
             bool                registerPlayer(UserCredentials)                         override;
 	    bool                validateUsername(const std::string & username)		override;
-            UserCredentials     getCredentialsByUsername(const std::string & username)  override;
-            std::vector<Score>  getAllPlayerMaxScore()                                  override;
+	    UserCredentials     adminLogin(const std::string & username)                override;
+            UserCredentials     getPlayerCredentials(const std::string & username)      override;
+            std::vector<Score>  getMaxScores()	                                        override;
             void                setPlayerMaxScore(const std::string & , unsigned int)   override;
             void                addPlayerScore(const std::string &, unsigned int)       override;
             void                changePlayerGamesLeft(const std::string & username, unsigned int games_left)    override;

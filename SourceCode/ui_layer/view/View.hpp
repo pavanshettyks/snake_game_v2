@@ -78,7 +78,7 @@ namespace ui_layer::view
             // Functions to display player related data.
             void play_game();
             bool check_player_status();
-            void make_payment();
+            void buy_premium();
             void view_previous_score();
             void view_leaderboard();
 

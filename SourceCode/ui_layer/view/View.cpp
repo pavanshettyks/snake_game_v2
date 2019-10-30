@@ -113,7 +113,7 @@ namespace ui_layer::view
             std::system(OS_DEP_CLEAR);
 	    //std::cout << termcolor::red << "Hello, Colorful World!" << std::endl;
             std::cout << "\033[1;31m-----------------------------------------\033[0m" << std::endl;
-            std::cout << "    Welcome to the game station Menu     " << std::endl;
+            std::cout << "    Welcome to game station menu     " << std::endl;
             std::cout << "\033[32m-----------------------------------------\033[0m" << std::endl;
             std::cout << "1 - Create New Player Account" << std::endl;
             std::cout << "2 - Player login       " << std::endl;
@@ -225,7 +225,7 @@ namespace ui_layer::view
         std::cout << "Enter your password: ";
         std::getline(std::cin, password);
 
-        cred = _persistentData->getCredentialsByUsername(username);
+        cred = _persistentData->getPlayerCredentials(username);
         //std::cout << "Invalid username or password." << cred.password <<std::endl;
         if (cred.password != password)
         {
@@ -261,7 +261,7 @@ namespace ui_layer::view
         {
             std::system(OS_DEP_CLEAR);
             std::cout << "---------------------------" << std::endl;
-            std::cout << "         Player Menu       " << std::endl;
+            std::cout << "         Snake Game Menu       " << std::endl;
             std::cout << "---------------------------" << std::endl;
             std::cout << "1 - Play Snake Game              " << std::endl;
             std::cout << "2 - Buy premium version           " << std::endl;
@@ -290,8 +290,8 @@ namespace ui_layer::view
                     //playerData->reduce_games_left();
                     break;
                 case 2:
-                    // displays payment options.
-                    make_payment();
+                    // Buy premium version
+                    buy_premium();
                     break;
                 case 3:
                     // Displays last 10 scores of the player.
@@ -331,8 +331,8 @@ namespace ui_layer::view
         std::cout <<termcolor::green<< "Username: admin" << std::endl;
         std::cout << "Enter password: ";
         std::getline(std::cin, password);
-
-        cred = _persistentData->getCredentialsByUsername("admin");
+	cred = _persistentData->adminLogin("admin");
+       // cred = _persistentData->getCredentialsByUsername("admin");
         if (cred.password != password)
         {
             std::cout <<termcolor::red<< "Invalid admin password." <<std::endl;
@@ -340,7 +340,9 @@ namespace ui_layer::view
             return false;
         }
 
-        std::cout << "System start initiated" <<termcolor::reset<< std::endl;
+        
+	std::cout << "System start initiated" <<termcolor::reset<< std::endl;
+	std::cout << "System started" <<termcolor::reset<< std::endl;
         std::cout << "Press enter to continue...";
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         return true;
@@ -409,7 +411,7 @@ namespace ui_layer::view
     // Asks for the payment information and then sends it down to process it.
     // If sucessful, adds more game to the player.
     //
-    void View::make_payment()
+    void View::buy_premium()
     {
         bool ret = false;
         std::string temp;
@@ -504,7 +506,7 @@ namespace ui_layer::view
         std::string temp;
 
         // Retrives all max score from the persistance layer.
-        leaderboard = _persistentData->getAllPlayerMaxScore();
+        leaderboard = _persistentData->getMaxScores();
 
         // Sort the data based on the max score.
         std::sort(leaderboard.begin(), leaderboard.end(), sortbyscore);

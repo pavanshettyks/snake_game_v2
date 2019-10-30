@@ -96,15 +96,11 @@ namespace technical_services_layer::Persistence
         return false;
     }
 
-
-    //
     // Returns the user credentials for the username provided.
     //
-    UserCredentials SimpleStorage::getCredentialsByUsername(const std::string & username)
+    UserCredentials SimpleStorage::adminLogin(const std::string & username)
     {
-        std::string line;
-        std::string name, passwd;
-        unsigned int score, gamesLeft;
+     
 
         // If admin just return the hardcoded value.
         if (username == "admin")
@@ -112,6 +108,28 @@ namespace technical_services_layer::Persistence
             UserCredentials ret = {"admin", "q123", 0, 0};
             return ret;
         }
+
+  // if username not found.
+        return {username, "", 0, 0};
+    }
+
+
+    //
+    // Returns the user credentials for the username provided.
+    //
+    UserCredentials SimpleStorage::getPlayerCredentials(const std::string & username)
+    {
+        std::string line;
+        std::string name, passwd;
+        unsigned int score, gamesLeft;
+
+     /*   // If admin just return the hardcoded value.
+        if (username == "admin")
+        {
+            UserCredentials ret = {"admin", "q123", 0, 0};
+            return ret;
+        }
+*/
 
         // Open credential file.
         std::ifstream credFile(CREDENTIAL_FILENAME, std::ios::in);
@@ -141,7 +159,7 @@ namespace technical_services_layer::Persistence
     //
     // Returns the vector of max scores of all the players.
     //
-    std::vector<Score> SimpleStorage::getAllPlayerMaxScore()
+    std::vector<Score> SimpleStorage::getMaxScores()
     {
         std::vector<Score> maxScores;
         std::string line;
