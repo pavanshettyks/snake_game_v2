@@ -13,6 +13,7 @@
 #include "technical_services_layer/Logger/SimpleLogger.hpp"
 #include "technical_services_layer/Payment/CreditCard.hpp"
 
+#undef max
 // Number of milliseconds that the piece remains before going 1 block down
 #define WAIT_TIME 700
 
