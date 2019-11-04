@@ -5,8 +5,8 @@
 #define _VIEW_
 
 #include <iostream>
-#include "domain_layer/game/game.h"
-#include "domain_layer/play_zone/PlayZone.h"
+#include "domain_layer/game/Game.hpp"
+#include "domain_layer/play_zone/PlayZone.hpp"
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory>
@@ -23,7 +23,7 @@
 
 #include "ui_layer/view/ViewHandler.hpp"
 //#include "ui_layer/commands/Commands.hpp"
-#include "ui_layer/controller/controller.hpp"
+#include "ui_layer/controller/Controller.hpp"
 //#include "domain_layer/game/GameHandler.hpp"
 #include "domain_layer/player/PlayerHandler.hpp"
 #include "technical_services_layer/Payment/CreditCard.hpp"

@@ -7,7 +7,7 @@
 
 
 #include "ui_layer/view/View.hpp"
-#include "domain_layer/game/game.h"
+#include "domain_layer/game/Game.hpp"
 //#include "domain_layer/player/Player.hpp"
 #include "technical_services_layer/Persistence/Storage.hpp"
 #include "technical_services_layer/Logger/SimpleLogger.hpp"
@@ -27,8 +27,7 @@
     // Enable these if want to debug the code using debugger.
     // Change to the absolute path in your system
     //
-    //#define BACKGROUND_IMAGE "D:\\repo\\tetris\\C++ Development Root\\SourceCode\\ui_layer\\resources\\orange.bmp"
-    //#define FONT_NAME "D:\\repo\\tetris\\C++ Development Root\\SourceCode\\ui_layer\\resources\\arial.ttf"
+ 
 
 #else
     #define OS_DEP_CLEAR     "clear"

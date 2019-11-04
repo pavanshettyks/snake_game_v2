@@ -1,6 +1,7 @@
-#include "PlayZone.h"
+#include "PlayZone.hpp"
 #include <iostream>
 #include <string>
+#include <random>
 
 PlayZone::PlayZone(const std::size_t screen_width,
                    const std::size_t screen_height,
@@ -75,6 +76,28 @@ void PlayZone::Render(Snake const snake, SDL_Point const &food) {
   // Update Screen
   SDL_RenderPresent(sdl_renderer);
 }
+
+void PlayZone::PlaceFood(Snake snake, SDL_Point food) {
+  int x, y;
+std::uniform_int_distribution<int> random_w;
+  std::uniform_int_distribution<int> random_h;
+std::random_device dev;
+  std::mt19937 engine;
+  while (true) {
+    
+     x = random_w(engine);
+    y = random_h(engine);
+
+    // Check that the location is not occupied by a snake item before placing it in placeZone
+    if (!snake.SnakeCell(x, y)) {
+      food.x = x;
+      food.y = y;
+      x= food.x;
+      return;
+   }
+  }
+}
+
 
 void PlayZone::UpdateWindowTitle(int score, int fps) {
   std::string title{"Snake Score: " + std::to_string(score) + " FPS: " + std::to_string(fps)};
