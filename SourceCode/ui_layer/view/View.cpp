@@ -388,11 +388,11 @@ namespace ui_layer::view
   	constexpr std::size_t kScreenHeight{640};
  	constexpr std::size_t kGridWidth{32};
   	constexpr std::size_t kGridHeight{32};
-  	Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
+  	PlayZone playzone(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
   	//Controller controller;
 	_control = new ui_layer::controller::Controller;
   	Game game(kGridWidth, kGridHeight);
-        game.Run(_control, renderer, kMsPerFrame);
+        game.Run(_control, playzone, kMsPerFrame);
 
         std::cout << "Game has terminated successfully!\n";
         std::cout << "Score: " << game.GetScore() << "\n";
@@ -468,12 +468,12 @@ namespace ui_layer::view
         unsigned int i = 1;
         std::string temp;
 
-        // Get last 10 scores of the player.
+        // Get last 15 scores of the player.
         prev_score = _playerData->get_previous_scores();
 
         // Display scores.
         std::cout << std::endl;
-        std::cout << "Previous 10 scores" << std::endl;
+        std::cout << "Previous 15 scores" << std::endl;
         std::cout << "------------------" << std::endl;
         for (std::vector<unsigned int>::iterator it = prev_score.begin() ;
              it != prev_score.end(); ++it)
@@ -582,15 +582,7 @@ namespace ui_layer::view
     }
 
     //
-    // Draws the rectangle blocks in the game.
-    //
-    void View::drawBlock(int pX1, int pY1, int pX2, int pY2, enum color pC)
-    {
-        SDL_Rect r = { pX1, pY1, pX2, pY2 };
-        SDL_SetRenderDrawColor(ren, mColors[pC][0], mColors[pC][1], mColors[pC][2], mColors[pC][3]);
-        SDL_RenderFillRect(ren, &r);
 
-    }
 
     //
     // Clear the screen to black
@@ -602,31 +594,8 @@ namespace ui_layer::view
         SDL_RenderClear(ren);
     }
 
-    //
-    // Returns screenHeight received from the SDL library.
-    //
-    int View::getScreenHeight()
-    {
-        return SDL_GetWindowSurface(win)->h;
-    }
+ 
 
-    //
-    // Updates screen to show all the renderings
-    //
-    void View::updateScreen()
-    {
-        SDL_RenderPresent(ren);
-    }
-
-    //
-    // Loads Background image
-    //
-    void View::loadBackGround()
-    {
-        SDL_RenderCopy(ren, background_tx, NULL, NULL);
-    }
-
-    //
     // Loads score.
     //
     void View::showScore(unsigned int score)
@@ -667,24 +636,5 @@ namespace ui_layer::view
         SDL_Quit();
     }
 
-    //
-    // Draw the piece provided.
-    //
-   
-    //
-    // Draw the two lines that delimit the board
-    //
-    void View::drawBoard()
-    {
-        // Calculate the limits of the board in pixels
-      
-    }
-
-    //
-    // Draw all the objects of the scene.
-    //
-    void View::drawScene()
-    {
-      
-    }
+    
 }

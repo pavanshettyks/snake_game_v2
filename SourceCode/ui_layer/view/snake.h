@@ -4,12 +4,12 @@
 #include <vector>
 #ifdef WINDOWS
     #include "ui_layer/sdl/include/windows/SDL.h"
-    #include "ui_layer/sdl/include/windows/SDL2_gfxPrimitives.h"
-    #include "ui_layer/sdl/include/windows/SDL_ttf.h"
+   // #include "ui_layer/sdl/include/windows/SDL2_gfxPrimitives.h"
+    //#include "ui_layer/sdl/include/windows/SDL_ttf.h"
 #else
     #include "ui_layer/sdl/include/linux/SDL.h"
-    #include "ui_layer/sdl/include/linux/SDL2_gfxPrimitives.h"
-    #include "ui_layer/sdl/include/linux/SDL_ttf.h"
+    //#include "ui_layer/sdl/include/linux/SDL2_gfxPrimitives.h"
+    //#include "ui_layer/sdl/include/linux/SDL_ttf.h"
 #endif
 
 class Snake {

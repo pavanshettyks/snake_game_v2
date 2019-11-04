@@ -7,7 +7,8 @@
 #include <iostream>
 //#include "controller.h"
 #include "game.h"
-#include "renderer.h"
+//#include "renderer.h"
+#include "domain_layer/play_zone/PlayZone.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory>
@@ -54,26 +55,23 @@ namespace ui_layer::view
             ~View() override;
 
         private:
-            // Menu related functions.
+       
+
+            // Drawing related functions.
+             void init_SDL();
+            int messageBox();
+            void cleanup_SDL();
+            void showScore(unsigned int );
+    
+            void clearScreen();
+           // void drawBlock(int pX1, int pY1, int pX2, int pY2, enum color pC);
+
+               // Menu related functions.
             bool initialize_system();
             bool display_main_menu();
             bool display_user_menu();
             void register_player();
             bool login_user();
-
-            // Drawing related functions.
-            void init_SDL();
-            int messageBox();
-            void cleanup_SDL();
-            void showScore(unsigned int );
-            void loadBackGround();
-            void updateScreen();
-            int getScreenHeight();
-            void clearScreen();
-            void drawBlock(int pX1, int pY1, int pX2, int pY2, enum color pC);
-            void drawScene();
-            void drawBoard();
-           // void drawPiece(int pX, int pY, std::vector<std::vector<int>> *piece, color piece_color);
 
             // Functions to display player related data.
             void play_game();
@@ -82,7 +80,7 @@ namespace ui_layer::view
             void view_previous_score();
             void view_leaderboard();
 
-           // domain_layer::game::BoardInfo board_info = { };
+         
             int mScreenHeight = 0;
 
             // These smart pointers hold pointers to lower architectural layer's interfaces
