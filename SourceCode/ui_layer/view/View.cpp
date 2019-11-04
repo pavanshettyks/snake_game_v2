@@ -9,7 +9,7 @@
 #include "ui_layer/view/View.hpp"
 #include "domain_layer/game/Game.hpp"
 //#include "domain_layer/player/Player.hpp"
-#include "technical_services_layer/Persistence/SimpleStorage.hpp"
+#include "technical_services_layer/Persistence/Storage.hpp"
 #include "technical_services_layer/Logger/SimpleLogger.hpp"
 #include "technical_services_layer/Payment/CreditCard.hpp"
 
@@ -59,7 +59,7 @@ namespace ui_layer::view
     // Create objects to creditcardFactory, logger and persistancehandler.
     //
     View::View()
-    : _persistentData(new technical_services_layer::Persistence::SimpleStorage),
+    : _persistentData(new technical_services_layer::Persistence::Storage),
       _loggerPtr(new technical_services_layer::Logging::SimpleLogger)
     {
         //_cmdData = NULL;

@@ -7,14 +7,14 @@
 #include <sstream>
 #include <algorithm>
 
-#include "technical_services_layer/Persistence/SimpleStorage.hpp"
+#include "technical_services_layer/Persistence/Storage.hpp"
 
 namespace technical_services_layer::Persistence
 {
     //
     // Constructor
     //
-    SimpleStorage::SimpleStorage()
+    Storage::Storage()
     : _loggerPtr(new technical_services_layer::Logging::SimpleLogger)
     {
         _logger << "Persistance storage has successfully initialized.";
@@ -23,7 +23,7 @@ namespace technical_services_layer::Persistence
     //
     // Destructor
     //
-    SimpleStorage::~SimpleStorage()
+    Storage::~Storage()
     {
         _logger << "Persistance storage has shutdown.";
     }
@@ -31,7 +31,7 @@ namespace technical_services_layer::Persistence
     //
     // Stores the users credentials into the file.
     //
-    bool SimpleStorage::registerPlayer(UserCredentials creds)
+    bool Storage::registerPlayer(UserCredentials creds)
     {
         // open credentials file.
         std::ofstream credFile(CREDENTIAL_FILENAME, std::ios::out | std::ios::app);
@@ -68,7 +68,7 @@ namespace technical_services_layer::Persistence
     //
     // Returns true if username is taken else false
     //
-     bool SimpleStorage::validateUsername(const std::string & username)
+     bool Storage::validateUsername(const std::string & username)
     {
         std::string line;
         std::string name, passwd;
@@ -98,7 +98,7 @@ namespace technical_services_layer::Persistence
 
     // Returns the user credentials for the username provided.
     //
-    UserCredentials SimpleStorage::adminLogin(const std::string & username)
+    UserCredentials Storage::adminLogin(const std::string & username)
     {
      
 
@@ -117,7 +117,7 @@ namespace technical_services_layer::Persistence
     //
     // Returns the user credentials for the username provided.
     //
-    UserCredentials SimpleStorage::getPlayerCredentials(const std::string & username)
+    UserCredentials Storage::getPlayerCredentials(const std::string & username)
     {
         std::string line;
         std::string name, passwd;
@@ -159,7 +159,7 @@ namespace technical_services_layer::Persistence
     //
     // Returns the vector of max scores of all the players.
     //
-    std::vector<Score> SimpleStorage::getMaxScores()
+    std::vector<Score> Storage::getMaxScores()
     {
         std::vector<Score> maxScores;
         std::string line;
@@ -188,7 +188,7 @@ namespace technical_services_layer::Persistence
     //
     // Changes the max score of the player in the file.
     //
-    void SimpleStorage::setPlayerMaxScore(const std::string & username, unsigned int maxScore)
+    void Storage::setPlayerMaxScore(const std::string & username, unsigned int maxScore)
     {
         int ret;
         std::string line;
@@ -242,7 +242,7 @@ namespace technical_services_layer::Persistence
     //
     // Appends the player score to the player file.
     //
-    void SimpleStorage::addPlayerScore(const std::string & username, unsigned int score)
+    void Storage::addPlayerScore(const std::string & username, unsigned int score)
     {
         std::string playerFilename(FILE_PATH);
         playerFilename.append(username);
@@ -260,7 +260,7 @@ namespace technical_services_layer::Persistence
     //
     // Changes the games left for the player in the credential file.
     //
-    void SimpleStorage::changePlayerGamesLeft(const std::string & username, unsigned int games_left)
+    void Storage::changePlayerGamesLeft(const std::string & username, unsigned int games_left)
     {
         int ret;
         std::string line;
@@ -313,7 +313,7 @@ namespace technical_services_layer::Persistence
     //
     // Returns the vector containing last 10 scores of the player from the player file.
     //
-    std::vector<unsigned int> SimpleStorage::getPlayerPrevScore(const std::string username)
+    std::vector<unsigned int> Storage::getPlayerPrevScore(const std::string username)
     {
         std::string line;
         unsigned int score;

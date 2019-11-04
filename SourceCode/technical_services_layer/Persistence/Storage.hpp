@@ -1,8 +1,8 @@
 //
-// SimpleStorage.hpp -- Manages data storage and retrival from the file.
+// Storage.hpp -- Manages data storage and retrival from the file.
 //
-#ifndef __SIMPLE_STORAGE__
-#define __SIMPLE_STORAGE__
+#ifndef __STORAGE__
+#define __STORAGE__
 
 #include "technical_services_layer/Persistence/PersistenceHandler.hpp"
 #include "technical_services_layer/Logger/SimpleLogger.hpp"
@@ -25,12 +25,12 @@ namespace technical_services_layer::Persistence
     //
     // Implements the functions of the PersistanceHandler Interface.
     //
-    class SimpleStorage : public technical_services_layer::Persistence::PersistenceHandler
+    class Storage : public technical_services_layer::Persistence::PersistenceHandler
     {
         public:
             using PersistenceHandler::PersistenceHandler;
-            SimpleStorage();
-            ~SimpleStorage();
+            Storage();
+            ~Storage();
 
             bool                registerPlayer(UserCredentials)                         override;
 	    bool                validateUsername(const std::string & username)		override;
@@ -51,4 +51,4 @@ namespace technical_services_layer::Persistence
     };
 }
 
-#endif  // __SIMPLE_STORAGE__
+#endif  // __STORAGE__
