@@ -5,13 +5,14 @@ Password for admin login is: q123
 Linux Build Instructions
 -------------------------
 
-1) Build.sh might not have execute permissions after uncompress
-2) need to run on terminal "chmod +x 777" (or permissions which suites the testing systems)
+1) Open the snakeGame folder and open the terminal in this location.
+2) In terminal run "chmod 777 Build.sh" (Because: Build.sh may not have execution permissions)
 3) Go to SourceCode directory ( cd SourceCode )
-4) run "../Build.sh"
-5) the shell script might fail if /usr/bin/sh is not present. (change it to shell available on target system)
-6) When build is complete, snake.exe binary will be generated in the same location.
-7) To execute the program run "./snake.exe
+4) run "../Build.sh" in the terminal
+5) If the script fails then open Build.sh and change it to corresponsding shell system. (#!/usr/bin/env bash or #!/usr/bin/sh).
+6) When build is complete, snake.exe binary will be generated in the SourceCode directory.
+7) Run "./snake.exe" to execute the program.
+8) Admin login password is "q123".
 
 
 
