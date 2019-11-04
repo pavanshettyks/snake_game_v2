@@ -1,3 +1,5 @@
+//helps to create playzone object. returns score to view
+
 #include "Game.hpp"
 #include <iostream>
 #ifdef WINDOWS

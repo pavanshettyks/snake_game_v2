@@ -1,3 +1,6 @@
+//handles the snake object 
+//loaction of snake head , spead of snake etc
+
 #include "Snake.hpp"
 #include <cmath>
 #include <iostream>

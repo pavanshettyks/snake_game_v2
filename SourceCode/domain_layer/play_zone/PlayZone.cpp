@@ -1,3 +1,5 @@
+//helps to create the zone in which snake will and food will be present
+
 #include "PlayZone.hpp"
 #include <iostream>
 #include <string>
