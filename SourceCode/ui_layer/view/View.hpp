@@ -5,9 +5,7 @@
 #define _VIEW_
 
 #include <iostream>
-//#include "controller.h"
-#include "game.h"
-//#include "renderer.h"
+#include "domain_layer/game/game.h"
 #include "domain_layer/play_zone/PlayZone.h"
 #include <stdio.h>
 #include <stdlib.h>

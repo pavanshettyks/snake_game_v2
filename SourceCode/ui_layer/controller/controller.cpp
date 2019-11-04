@@ -9,7 +9,7 @@
     #include "ui_layer/sdl/include/linux/SDL2_gfxPrimitives.h"
     #include "ui_layer/sdl/include/linux/SDL_ttf.h"
 #endif
-#include "ui_layer/view/snake.h"
+#include "domain_layer/snake/snake.h"
 
 namespace ui_layer::controller
 {

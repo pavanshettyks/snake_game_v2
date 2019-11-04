@@ -13,7 +13,7 @@
 #endif
 #include "ui_layer/controller/controller.hpp"
 //#include "renderer.h"
-#include "snake.h"
+#include "domain_layer/snake/snake.h"
 #include "domain_layer/play_zone/PlayZone.h"
 
 class Game {

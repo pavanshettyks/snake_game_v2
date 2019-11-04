@@ -1,7 +1,8 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "ui_layer/view/snake.h"
+//#include "ui_layer/view/snake.h"
+#include "domain_layer/snake/snake.h"
 
 namespace ui_layer::controller
 {
