@@ -7,7 +7,7 @@
 
 
 #include "ui_layer/view/View.hpp"
-#include "domain_layer/game/Game.hpp"
+#include "domain_layer/game/game.h"
 //#include "domain_layer/player/Player.hpp"
 #include "technical_services_layer/Persistence/Storage.hpp"
 #include "technical_services_layer/Logger/SimpleLogger.hpp"

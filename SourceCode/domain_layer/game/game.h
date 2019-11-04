@@ -15,6 +15,7 @@
 //#include "renderer.h"
 #include "domain_layer/snake/snake.h"
 #include "domain_layer/play_zone/PlayZone.h"
+#include "domain_layer/player/Player.hpp"
 
 class Game {
  public:
