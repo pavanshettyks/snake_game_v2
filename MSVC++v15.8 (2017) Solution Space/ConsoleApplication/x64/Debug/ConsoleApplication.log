@@ -1,0 +1,22 @@
+﻿  Storage.cpp
+  ConsoleApplication.vcxproj -> C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\MSVC++v15.8 (2017) Solution Space\ConsoleApplication\x64\Debug\ConsoleApplication-x64-Debug.exe
+C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\SourceCode\ui_layer\sdl\include\windows\SDL_rect.h(76): warning C26812: The enum type 'SDL_bool' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).
+C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\SourceCode\ui_layer\view\View.cpp(60): warning C26495: Variable 'ui_layer::view::View::_control' is uninitialized. Always initialize a member variable (type.6).
+C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\SourceCode\technical_services_layer\Persistence\PersistenceHandler.hpp(18): warning C26495: Variable 'technical_services_layer::Persistence::UserCredentials::maxScore' is uninitialized. Always initialize a member variable (type.6).
+C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\SourceCode\technical_services_layer\Payment\CreditCard.hpp(25): warning C26495: Variable 'technical_services_layer::payment::CreditCardInfo::expiryMonth' is uninitialized. Always initialize a member variable (type.6).
+C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\SourceCode\ui_layer\view\View.cpp(591): warning C26812: The enum type 'ui_layer::view::color' is unscoped. Prefer 'enum class' over 'enum' (Enum.3).
+  A subdirectory or file C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\MSVC++v15.8 (2017) Solution Space\ConsoleApplication\executable already exists.
+          1 file(s) copied.
+  C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\MSVC++v15.8 (2017) Solution Space\..\SourceCode\ui_layer\sdl\dll\windows\libfreetype-6.dll
+  C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\MSVC++v15.8 (2017) Solution Space\..\SourceCode\ui_layer\sdl\dll\windows\libjpeg-9.dll
+  C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\MSVC++v15.8 (2017) Solution Space\..\SourceCode\ui_layer\sdl\dll\windows\libpng16-16.dll
+  C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\MSVC++v15.8 (2017) Solution Space\..\SourceCode\ui_layer\sdl\dll\windows\libtiff-5.dll
+  C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\MSVC++v15.8 (2017) Solution Space\..\SourceCode\ui_layer\sdl\dll\windows\libwebp-7.dll
+  C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\MSVC++v15.8 (2017) Solution Space\..\SourceCode\ui_layer\sdl\dll\windows\SDL.dll
+  C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\MSVC++v15.8 (2017) Solution Space\..\SourceCode\ui_layer\sdl\dll\windows\SDL2.dll
+  C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\MSVC++v15.8 (2017) Solution Space\..\SourceCode\ui_layer\sdl\dll\windows\SDL2_gfx.dll
+  C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\MSVC++v15.8 (2017) Solution Space\..\SourceCode\ui_layer\sdl\dll\windows\SDL2_image.dll
+  C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\MSVC++v15.8 (2017) Solution Space\..\SourceCode\ui_layer\sdl\dll\windows\SDL2_ttf.dll
+  C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\MSVC++v15.8 (2017) Solution Space\..\SourceCode\ui_layer\sdl\dll\windows\SDL_ttf.dll
+  C:\Users\CSUFTitan\Downloads\snakeGame-master (1)\snakeGame-master\MSVC++v15.8 (2017) Solution Space\..\SourceCode\ui_layer\sdl\dll\windows\zlib1.dll
+         12 file(s) copied.
