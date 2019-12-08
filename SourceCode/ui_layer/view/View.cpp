@@ -449,8 +449,9 @@ namespace ui_layer::view
     {
         bool ret = false;
         std::string temp;
+        std::system(OS_DEP_CLEAR);
         technical_services_layer::payment::CreditCardInfo ccInfo;
-
+        std::cout <<termcolor::green<< "With premium version you will get to play 50 games." <<termcolor::reset<< std::endl;
         // Ask for credit card info.
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << std::endl;

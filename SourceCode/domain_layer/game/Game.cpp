@@ -92,7 +92,7 @@ void Game::PlaceFood() {
       break;
     }
   }
-  if(iteration <= 10){
+  if(iteration <= 20){
 
           while (true) {
             x = random_w(engine);

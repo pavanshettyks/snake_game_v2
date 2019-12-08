@@ -13,7 +13,7 @@
     // Enable this if want to debug the code using debugger.
     // Change to the absolute path in your system
     //
-    //#define FILE_PATH "D:\\repo\\snake\\C++ Development Root\\SourceCode\\technical_services_layer\\"
+    // #define FILE_PATH "D:\\repo\\snake\\C++ Development Root\\SourceCode\\technical_services_layer\\"
 #else
     #define FILE_PATH "./technical_services_layer/"
 #endif

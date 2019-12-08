@@ -24,26 +24,16 @@ namespace domain_layer::food
                 static FoodFactory instance;
                 return &instance;
             }
-
-            //
-            // Destructor
-            //
-            ~FoodFactory()
-            {
-              //  mFactoryVector.clear();
-            }
-
-            //
             // Create random food type food object.
             //
             Food* CreateRandomFood();
-
+            ~FoodFactory(){ }
         private:
             FoodFactory();
             int count;
             std::vector<createFoodFn> mFactoryVector;
             void Register(createFoodFn);
-            
+
     };
 }
 

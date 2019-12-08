@@ -54,11 +54,11 @@ namespace domain_layer::game
             // Functions to get data from domain_layer.
             virtual unsigned int get_curr_score()                   = 0;
             virtual struct BoardInfo get_play_zone_info()               = 0;
-	    virtual struct SnakeInfo get_snake_info()               = 0;
-	    virtual struct FoodInfo get_food_info()               = 0;
+	          virtual struct SnakeInfo get_snake_info()               = 0;
+	          virtual struct FoodInfo get_food_info()               = 0;
             virtual std::vector<std::vector<int>> get_play_zone_data()  = 0;
             virtual void process_timeout_movement()                 = 0;
-         
+
     };
 
     inline GameHandler::~GameHandler() noexcept
