@@ -13,7 +13,7 @@
     // Enable this if want to debug the code using debugger.
     // Change to the absolute path in your system
     //
-    //#define FILE_PATH "D:\\repo\\tetris\\C++ Development Root\\SourceCode\\technical_services_layer\\"
+    //#define FILE_PATH "D:\\repo\\snake\\C++ Development Root\\SourceCode\\technical_services_layer\\"
 #else
     #define FILE_PATH "./technical_services_layer/"
 #endif
@@ -44,7 +44,7 @@ namespace technical_services_layer::Persistence
 
         private:
             technical_services_layer::Logging::LoggerHandler*                   _loggerPtr;
-            
+
             // convenience reference object enabling standard insertion syntax
             // This line must be physically after the definition of _loggerPtr
             technical_services_layer::Logging::LoggerHandler                    & _logger = *_loggerPtr;
