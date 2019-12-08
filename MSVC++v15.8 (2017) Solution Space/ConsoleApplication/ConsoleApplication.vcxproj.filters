@@ -42,6 +42,12 @@
     <ClCompile Include="..\..\SourceCode\technical_services_layer\Persistence\Storage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\SourceCode\domain_layer\food\Food.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SourceCode\domain_layer\food\FoodFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\SourceCode\technical_services_layer\Persistence\PersistenceHandler.hpp">
@@ -87,6 +93,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\SourceCode\technical_services_layer\Persistence\Storage.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SourceCode\domain_layer\food\FoodFactory.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SourceCode\domain_layer\food\Food.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

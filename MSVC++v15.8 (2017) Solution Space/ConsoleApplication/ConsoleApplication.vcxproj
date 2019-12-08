@@ -237,6 +237,8 @@ copy "$(SolutionDir)..\SourceCode\ui_layer\sdl\dll\windows\*" "$(ProjectDir)exec
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\SourceCode\domain_layer\food\Food.cpp" />
+    <ClCompile Include="..\..\SourceCode\domain_layer\food\FoodFactory.cpp" />
     <ClCompile Include="..\..\SourceCode\domain_layer\game\Game.cpp" />
     <ClCompile Include="..\..\SourceCode\domain_layer\player\Player.cpp" />
     <ClCompile Include="..\..\SourceCode\domain_layer\play_zone\PlayZone.cpp" />
@@ -248,6 +250,8 @@ copy "$(SolutionDir)..\SourceCode\ui_layer\sdl\dll\windows\*" "$(ProjectDir)exec
     <ClCompile Include="..\..\SourceCode\ui_layer\view\View.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\SourceCode\domain_layer\food\Food.hpp" />
+    <ClInclude Include="..\..\SourceCode\domain_layer\food\FoodFactory.hpp" />
     <ClInclude Include="..\..\SourceCode\domain_layer\game\Game.hpp" />
     <ClInclude Include="..\..\SourceCode\domain_layer\game\GameHandler.hpp" />
     <ClInclude Include="..\..\SourceCode\domain_layer\player\Player.hpp" />
