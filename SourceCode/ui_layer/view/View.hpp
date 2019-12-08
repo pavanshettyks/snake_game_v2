@@ -4,6 +4,10 @@
 #ifndef _VIEW_
 #define _VIEW_
 
+#include "domain_layer/food/Food.hpp"
+#include "domain_layer/food/FoodFactory.hpp"
+
+
 #include <iostream>
 #include "domain_layer/game/Game.hpp"
 #include "domain_layer/play_zone/PlayZone.hpp"
@@ -53,14 +57,14 @@ namespace ui_layer::view
             ~View() override;
 
         private:
-       
+
 
             // Drawing related functions.
              void init_SDL();
             int messageBox();
             void cleanup_SDL();
             void showScore(unsigned int );
-    
+
             void clearScreen();
            // void drawBlock(int pX1, int pY1, int pX2, int pY2, enum color pC);
 
@@ -77,8 +81,10 @@ namespace ui_layer::view
             void buy_premium();
             void view_previous_score();
             void view_leaderboard();
+            void view_gameHelp();
 
-         
+
+
             int mScreenHeight = 0;
 
             // These smart pointers hold pointers to lower architectural layer's interfaces

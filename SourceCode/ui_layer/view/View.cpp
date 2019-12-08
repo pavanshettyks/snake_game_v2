@@ -28,7 +28,7 @@
     // Enable these if want to debug the code using debugger.
     // Change to the absolute path in your system
     //
- 
+
 
 #else
     #define OS_DEP_CLEAR     "clear"
@@ -67,6 +67,9 @@ namespace ui_layer::view
         _playerData = NULL;
         mScreenHeight = 0;
         _ccFactory = technical_services_layer::payment::CreditCardFactory::createFactory();
+
+
+
         _logger << "View being used and has been successfully initialized";
     }
 
@@ -108,7 +111,7 @@ namespace ui_layer::view
     {
         unsigned int choice = 0;
         bool ret = false;
-    
+
         while (1)
         {
             std::system(OS_DEP_CLEAR);
@@ -123,7 +126,7 @@ namespace ui_layer::view
             std::cout << "Enter your choice: ";
 //	    std::cout << "\033[1;31mbold red text\033[0m\n";
             std::cin >> choice;
-    
+
             if (choice == 0 || choice > 3)
             {
                 std::cout << "Invalid option selected \n" << std::endl;
@@ -131,7 +134,7 @@ namespace ui_layer::view
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 continue;
             }
-    
+
             switch (choice)
             {
                 case 1:
@@ -171,9 +174,9 @@ namespace ui_layer::view
         std::getline(std::cin, username);
         std::cout << "Enter password: ";
         std::getline(std::cin, password);
-	
 
-	
+
+
         if (_persistentData->validateUsername(username))
         {
             std::cout <<termcolor::red << "Username is already taken." << termcolor::reset << std::endl;
@@ -196,7 +199,7 @@ namespace ui_layer::view
 	std::cout << termcolor::green << "Player registration successfull" <<termcolor::reset<< std::endl;
         //std::cout << "Player registration successfull." << std::endl;
 	std::cout << "Thank you for choosing our game"<< std::endl;
-	
+
 
     end:
 	//Sleep(1000);
@@ -216,7 +219,7 @@ namespace ui_layer::view
         bool ret = true;
 
         std::system(OS_DEP_CLEAR);
-	
+
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "------------------------------" << std::endl;
         std::cout << "         Player Login      " << std::endl;
@@ -243,7 +246,7 @@ namespace ui_layer::view
         _playerData =  new domain_layer::player::Player(cred.username, cred.maxScore, cred.gamesLeft, _persistentData);
 
     end:
-	
+
         std::cout << "Press enter to continue";
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         return ret;
@@ -266,9 +269,9 @@ namespace ui_layer::view
             std::cout << "---------------------------" << std::endl;
             std::cout << "1 - Play Snake Game              " << std::endl;
             std::cout << "2 - Buy premium version           " << std::endl;
-            std::cout << "3 - View previous scores   " << std::endl;
+            std::cout << "3 - View previous game results   " << std::endl;
             std::cout << "4 - View Leaderboard       " << std::endl;
-	    std::cout << "5 - Game help      " << std::endl;
+	          std::cout << "5 - Game help      " << std::endl;
             std::cout << "6 - Logout                 " << std::endl;
             std::cout << "---------------------------" << std::endl;
             std::cout << "Please enter your choice: ";
@@ -286,7 +289,7 @@ namespace ui_layer::view
 
                     // Starts the game.
                     play_game();
-			
+
                     // Reduce the number of games that player can play by 1.
                     //playerData->reduce_games_left();
                     break;
@@ -302,9 +305,9 @@ namespace ui_layer::view
                     // Displays the ranking of each player based on their max score.
                     view_leaderboard();
                     break;
-		case 5:
+		            case 5:
                     // Displays game controls and tricks
-                    //view_leaderboard();
+                    view_gameHelp();
                     break;
                 case 6:
                     goto exit_loop;
@@ -332,21 +335,50 @@ namespace ui_layer::view
         std::cout <<termcolor::green<< "Username: admin" << std::endl;
         std::cout << "Enter password: ";
         std::getline(std::cin, password);
-	cred = _persistentData->adminLogin("admin");
+	      cred = _persistentData->adminLogin("admin");
        // cred = _persistentData->getCredentialsByUsername("admin");
         if (cred.password != password)
         {
             std::cout <<termcolor::red<< "Invalid admin password." <<std::endl;
-	    std::cout << "Please try again." <<std::endl;
+	          std::cout << "Please try again." <<std::endl;
             return false;
         }
 
-        
+
 	std::cout << "System start initiated" <<termcolor::reset<< std::endl;
 	std::cout << "System started" <<termcolor::reset<< std::endl;
         std::cout << "Press enter to continue...";
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         return true;
+    }
+
+    //
+    // Game helps and tricks
+    //
+    void View::view_gameHelp(){
+      std::system(OS_DEP_CLEAR);
+      std::string temp;
+      std::cout << std::endl;
+      std::cout << "\033[32m-----------------------------------------\033[0m" << std::endl;
+      std::cout << "    Welcome to game station help     " << std::endl;
+      std::cout << "\033[32m-----------------------------------------\033[0m" << std::endl;
+      std::cout << " Controls:    " << std::endl;
+      std::cout << " ^ (upward arrow) to move the snake up " << std::endl;
+      std::cout << " v (downward arrow) to move the snake down   " << std::endl;
+      std::cout << " < (left arrow) to move the snake left   " << std::endl;
+      std::cout << " > (right arrow) to move the snake right   " << std::endl;
+      std::cout << " Rules:    " << std::endl;
+      std::cout << " 1. If snake touches its own body game ends   " << std::endl;
+      std::cout << " 2. If snake eats food its body grows   " << std::endl;
+      std::cout << " 3. For every food the snake eats poits will be awarded  " << std::endl;
+      std::cout << " 4. Snake's speed will increase after it eats food" << std::endl;
+      std::cout << " Tricks:    " << std::endl;
+      std::cout << " 1. Try eating more food   " << std::endl;
+      std::cout << " 2. Try placing the snake on the boundary " << std::endl;
+      std::cout << " 3. If the snake length increases try keeping snake body away from head " << std::endl;
+      std::cout << "Press enter to goto main menue.....";
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      getline(std::cin, temp);
     }
 
     //
@@ -396,7 +428,7 @@ namespace ui_layer::view
 
         std::cout << "Game has terminated successfully!\n";
         std::cout << "Score: " << game.GetScore() << "\n";
- 	std::cout << std::endl;
+ 	      std::cout << std::endl;
         std::cout << "Press enter to continue...";
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         getline(std::cin, temp);
@@ -423,7 +455,7 @@ namespace ui_layer::view
         std::cout << std::endl;
         std::cout << "   Payment Info   " << std::endl;
         std::cout << "------------------" << std::endl;
-	std::cout << "Card type (visa/mastercard): " << std::endl;
+	      std::cout << "Card type (visa/mastercard): " << std::endl;
         getline(std::cin, ccInfo.cardType);
         std::cout << "Name on card: " << std::endl;
         getline(std::cin, ccInfo.name);
@@ -460,7 +492,7 @@ namespace ui_layer::view
     }
 
     //
-    // Display last 10 scores of the player.
+    // Display last 15 scores of the player.
     //
     void View::view_previous_score()
     {
@@ -528,7 +560,7 @@ namespace ui_layer::view
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
 
-  
+
     //
     // Displays the popup message box when the game is over.
     //
@@ -594,7 +626,7 @@ namespace ui_layer::view
         SDL_RenderClear(ren);
     }
 
- 
+
 
     // Loads score.
     //
@@ -636,5 +668,5 @@ namespace ui_layer::view
         SDL_Quit();
     }
 
-    
+
 }
