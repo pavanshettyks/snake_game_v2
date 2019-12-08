@@ -18,7 +18,7 @@ namespace domain_layer::player
         public:
             PlayerHandler() = default;
             virtual ~PlayerHandler() noexcept = 0;
-
+            virtual void                      set_max_score(unsigned int) = 0;
             virtual std::vector<unsigned int> get_previous_scores()     = 0;
             virtual unsigned int              get_games_left()          = 0;
             virtual void                      add_games_after_payment() = 0;

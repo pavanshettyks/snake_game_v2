@@ -62,7 +62,7 @@ namespace domain_layer::player
     }
 
     //
-    // Returns the last 10 scores of the player.    
+    // Returns the last 10 scores of the player.
     //
     std::vector<unsigned int> Player::get_previous_scores()
     {
@@ -83,6 +83,7 @@ namespace domain_layer::player
     void Player::reduce_games_left()
     {
         this->games_left--;
+          _persistanceData->changePlayerGamesLeft(this->username, this->games_left);
     }
 
     //

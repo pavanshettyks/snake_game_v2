@@ -286,12 +286,12 @@ namespace ui_layer::view
                     {
                         break;
                     }
-
+                    // Reduce the number of games that player can play by 1.
+                    _playerData->reduce_games_left();
                     // Starts the game.
                     play_game();
 
-                    // Reduce the number of games that player can play by 1.
-                    //playerData->reduce_games_left();
+
                     break;
                 case 2:
                     // Buy premium version
@@ -393,8 +393,8 @@ namespace ui_layer::view
         if(_playerData->get_games_left() <= 0)
         {
             ret = false;
-            std::cout << "Your game limit is over." << std::endl;
-            std::cout << "Please buy premium version to play more games" << std::endl;
+            std::cout << termcolor::red <<"Your game limit is over." << termcolor::reset <<std::endl;
+            std::cout<< termcolor::green << "Please buy premium version to play more games" << termcolor::reset << std::endl;
             std::cout << "Press enter to continue...";
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             getline(std::cin, temp);
@@ -427,7 +427,8 @@ namespace ui_layer::view
         game.Run(_control, playzone, kMsPerFrame);
 
         std::cout << "Game has terminated successfully!\n";
-        std::cout << "Score: " << game.GetScore() << "\n";
+        _playerData->set_max_score(game.GetScore());
+        std::cout <<termcolor::green << "Score: " << game.GetScore() << termcolor::reset<<"\n";
  	      std::cout << std::endl;
         std::cout << "Press enter to continue...";
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
