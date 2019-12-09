@@ -198,7 +198,7 @@ namespace ui_layer::view
         }
 	std::cout << termcolor::green << "Player registration successfull" <<termcolor::reset<< std::endl;
         //std::cout << "Player registration successfull." << std::endl;
-	std::cout << "Thank you for choosing our game"<< std::endl;
+	std::cout << "Thank you for choosing our services"<< std::endl;
 
 
     end:

@@ -183,3 +183,16 @@ void Game::Update() {
 
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
+
+void Game::handle_input_right(){
+   ctrl->HandleInput_right();
+}
+void Game::handle_input_left(){
+ctrl->HandleInput_left();
+}
+void Game::handle_input_up(){
+  ctrl->HandleInput_up();
+}
+void Game::handle_input_down(){
+  ctrl->HandleInput_down();
+}

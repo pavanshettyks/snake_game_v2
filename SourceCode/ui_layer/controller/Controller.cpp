@@ -50,4 +50,30 @@ namespace ui_layer::controller
     }
   }
 }
+
+
+/// remove this once generic code is working
+//
+
+void Controller::HandleInput_right() const{
+  //ChangeDirection(snake, Snake::Direction::kRight,
+    //              Snake::Direction::kLeft);
+      //            snake.direction = Snake::Direction::kLeft;
+}
+void Controller::HandleInput_left() const{
+  //ChangeDirection(snake, Snake::Direction::kLeft,
+    //              Snake::Direction::kRight);
+
+}
+void Controller::HandleInput_up() const{
+  //ChangeDirection(snake, Snake::Direction::kUp,
+    //              Snake::Direction::kDown);
+
+}
+void Controller::HandleInput_down() const{
+  //ChangeDirection(snake, Snake::Direction::kDown,
+    //              Snake::Direction::kUp);
+}
+
+
 }

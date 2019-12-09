@@ -6,6 +6,8 @@
 
 #include <string>
 #include <vector>
+#include "ui_layer/controller/Controller.hpp"
+#include "domain_layer/play_zone/PlayZone.hpp"
 
 namespace domain_layer::game
 {
@@ -50,16 +52,18 @@ namespace domain_layer::game
         public:
             GameHandler() {};
             virtual ~GameHandler() noexcept = 0;
-
+            virtual int GetScore() const =0;
+            virtual int GetSize() const =0;
+            virtual void Run(ui_layer::controller::Controller* const &controller, PlayZone &playzone,
+                     std::size_t target_frame_duration) = 0;
             // Functions to get data from domain_layer.
-            virtual unsigned int get_curr_score()                   = 0;
-            virtual struct BoardInfo get_play_zone_info()               = 0;
-	          virtual struct SnakeInfo get_snake_info()               = 0;
-	          virtual struct FoodInfo get_food_info()               = 0;
-            virtual std::vector<std::vector<int>> get_play_zone_data()  = 0;
-            virtual void process_timeout_movement()                 = 0;
+            virtual void handle_input_right()                   = 0;
+            virtual void handle_input_left()                   = 0;
+            virtual void handle_input_up()                   = 0;
+            virtual void handle_input_down()                   = 0; 
+          //  virtual std::vector<std::vector<int>> get_play_zone_data()  = 0;
 
-    };
+            };
 
     inline GameHandler::~GameHandler() noexcept
     {
