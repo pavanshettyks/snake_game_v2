@@ -21,8 +21,8 @@
 #ifdef WINDOWS
 
     #define OS_DEP_CLEAR     "cls"
-    #define BACKGROUND_IMAGE "../../../SourceCode/ui_layer/resources/orange.bmp"
-    #define FONT_NAME        "../../../SourceCode/ui_layer/resources/arial.ttf"
+  //  #define BACKGROUND_IMAGE "../../../SourceCode/ui_layer/resources/orange.bmp"
+  //  #define FONT_NAME        "../../../SourceCode/ui_layer/resources/arial.ttf"
 
     //
     // Enable these if want to debug the code using debugger.
@@ -476,7 +476,7 @@ namespace ui_layer::view
         technical_services_layer::payment::CreditCard* creditCard = _ccFactory->createCreditCard(ccInfo);
 
         // Request payment processing.
-        ret = creditCard->make_payment();
+        ret = creditCard->doPayment();
         if (ret == false)
         {
             std::cout << "Credit card payment failed." << std::endl;

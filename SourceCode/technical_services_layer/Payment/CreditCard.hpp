@@ -34,7 +34,7 @@ namespace technical_services_layer::payment
             {
             }
 
-            virtual bool make_payment() = 0;
+            virtual bool doPayment() = 0;
             virtual ~CreditCard() = 0;
 
         protected:
@@ -59,7 +59,7 @@ namespace technical_services_layer::payment
             }
 
             ~VisaCard() override = default;
-            bool make_payment();
+            bool doPayment();
     };
 
     class MasterCard : public CreditCard
@@ -71,7 +71,7 @@ namespace technical_services_layer::payment
             }
 
             ~MasterCard() override = default;
-            bool make_payment();
+            bool doPayment();
     };
 
 

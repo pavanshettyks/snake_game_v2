@@ -58,8 +58,8 @@ namespace technical_services_layer::payment
     //
     // Processes the payment of visa card.
     //
-     
-    bool VisaCard::make_payment()
+
+    bool VisaCard::doPayment()
     {
         _logger << "Visa payment sucessful.";
         return true;
@@ -68,7 +68,7 @@ namespace technical_services_layer::payment
     //
     // Processes the payment of mastercard.
     //
-    bool MasterCard::make_payment()
+    bool MasterCard::doPayment()
     {
         _logger << "MasterCard payment sucessful.";
         return true;
