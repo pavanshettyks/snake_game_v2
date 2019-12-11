@@ -20,7 +20,7 @@ Linux Build Instructions
 Visual Studio Build Instructions
 ---------------------------------
 1) Open the visual studio solution.
-2) Build the solution.
+2) Build the solution. [Incase of errors during the build, retarget the solution and verify Platform Toolset set is set correctly.]
 3) It will create a new folder name "executable" if not present in the $(ProjectDir) folder.
 4) It will also copy any SDL dll needed for execution to that folder too.
 5) To execute the program, go the that folder in the command prompt and run ".\ConsoleApplication-x64-Release.exe"
